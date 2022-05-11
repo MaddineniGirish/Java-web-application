@@ -9,7 +9,9 @@ In this Project,
 
 => using the sonar qube plugin from maven to generate the sonarqube report by configuring the sonar server details in jenkins configure system by installing sonar scanner plugin.
 
-=> And configured the Artifactory plugin info in pom.xml to store the build artifact/package in Jfrog artifactory.
+=> setting up the quality gate check in the pipeline of jenkins by configuring webhook in sonarqube to pass/abort the pipeline according to the quality gate result of sonarqube. 
+
+=> And next, configured the Artifactory plugin info in pom.xml to store the build artifact/package in Jfrog artifactory.
 
 => Here i'm building a docker image using a tomcat image as base and on top of that i am copying the .war that located in the target directory to the webapps of tomcat by exposing port 8080:8080
 
