@@ -42,5 +42,13 @@ node ("demo-node"){
             sh "ssh -o StrictHostKeyChecking=no ubuntu@18.217.115.41 docker run -d --name demo1 -p 8080:8080 girishdocker18/java-web-application:${BUILD_NUMBER}"
         }
     }
+    
+    post {
+	    always {
+            wrap([$class: 'BuildUser']){
+                slackSend(channel: "#general", message: "Status: ${currentBuild.currentResult}, USER: ${BUILD_USER}, Build_ID: #${env.BUILD_ID}, JOB_NAME: ${env.JOB_NAME}, URL: <${env.BUILD_URL}|(Open)>")
+            }
+        }
+    }   
 }
     
